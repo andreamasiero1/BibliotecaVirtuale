@@ -79,7 +79,7 @@ Book *Book::deserializza(const QJsonObject &jsonObject)
     return b;
 }
 
-QWidget *Book::accept(MediaVisitor *visitor)
+QWidget *Book::accept(MediaVisitor &visitor)
 {
-    return visitor->visit(this);
+    return visitor.visit(this);
 }

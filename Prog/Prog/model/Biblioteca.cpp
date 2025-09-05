@@ -1,7 +1,7 @@
 #include "Biblioteca.h"
 #include "Book.h"
 #include "Film.h"
-#include "Magazine.h"
+#include "MagazineArticle.h"
 #include "../view/MediaCollectorVisitor.h"
 
 // Costruttore di default di Biblioteca
@@ -35,12 +35,12 @@ void Biblioteca::aggiungiMedia(Media *media)
     }
     catch (const std::exception &e)
     {
-        throw; // rilancia l'eccezione e la gestisce al livello superiore
+        throw;
     }
 }
 
 // Rimuove un Media specifico dalla Biblioteca
-void Biblioteca::rimuoviMedia(Media *media)
+bool Biblioteca::rimuoviMedia(Media *media)
 {
     try
     {
@@ -52,25 +52,30 @@ void Biblioteca::rimuoviMedia(Media *media)
         return false;
     }
 }
+// Rimuove un Media dalla biblioteca tramite il suo indice posizionale.
+void Biblioteca::rimuoviMediaAt(int index)
+{
+    mediaContainer.removeAt(index);
+}
 
-// Rimuove un Media dalla Biblioteca tramite il suo indiece posizionale
+// Ottiene un Media dalla biblioteca tramite il suo indice posizionale.
 Media *Biblioteca::getMediaAt(int index) const
 {
     return mediaContainer.at(index);
 }
 
 // Ricerca Media per titolo nella Biblioteca
-QList<Media *> Biblioteca::cercaPerTitolo(cont QString &titolo) const
+QList<Media *> Biblioteca::cercaPerTitolo(const QString &titolo) const
 {
     return mediaContainer.find([&titolo](Media *media)
-                               { return media->getTitolo().contains(titolo, Qt::CaseInsensitive); });
+                               { return media->getTitle().contains(titolo, Qt::CaseInsensitive); });
 }
 
 // Ricerca Media per anno di pubblicazione nella Biblioteca
 QList<Media *> Biblioteca::cercaPerAnno(int anno) const
 {
     return mediaContainer.find([&anno](Media *media)
-                               { return media->getAnnoPubblicazione() == anno; });
+                               { return media->getYear() == anno; });
 }
 
 // Ottiene tutti i Media presenti nella Biblioteca
@@ -80,7 +85,7 @@ QList<Media *> Biblioteca::getTuttiMedia() const
 }
 
 // Raccoglie Media per tipo utilizzando il Pattern Visitor
-QList<Media *> Biblioteca::collectMediaByType(MediaFilter::FilterTyper filterType) const
+QList<Media *> Biblioteca::collectMediaByType(MediaFilter::FilterType filterType) const
 {
     MediaCollectorVisitor collector(filterType);
     // Applica il visitor ad ogni Media

@@ -43,7 +43,7 @@ QString Film::visualizzaDettagli() const
         .arg(director)
         .arg(duration)
         .arg(genere)
-        .arg(getCopieDisponibili());
+        .arg(getCopiesAvailable());
 }
 
 QJsonObject Film::serializza() const
@@ -54,7 +54,7 @@ QJsonObject Film::serializza() const
     jsonObject["year"] = year;
     jsonObject["director"] = director;
     jsonObject["duration"] = duration;
-    jsonObject["genre"] = genre;
+    jsonObject["genre"] = genere;
     jsonObject["coverImagePath"] = coverImagePath;
     jsonObject["copiesAvailable"] = getCopiesAvailable();
     return jsonObject;
@@ -79,7 +79,7 @@ Film *Film::deserializza(const QJsonObject &jsonObject)
     return f;
 }
 
-QWidget *Film::accept(MediaVisitor *visitor)
+QWidget *Film::accept(MediaVisitor &visitor)
 {
-    return visitor->visit(this);
+    return visitor.visit(this);
 }

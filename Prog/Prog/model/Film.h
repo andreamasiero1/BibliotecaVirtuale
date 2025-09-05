@@ -4,7 +4,8 @@
 #include "Media.h"
 #include "../view/MediaVisitor.h"
 
-class Film : public Media {
+class Film : public Media
+{
 public:
     Film(const QString &title, int year, const QString &director, int duration, const QString &genere, const QString &coverImagePath = "");
     Film(const Film &other);
@@ -18,7 +19,7 @@ public:
     QJsonObject serializza() const override;
     Media *clone() const override;
     static Film *deserializza(const QJsonObject &jsonObject);
-    QWidget *accept(MediaVisitor *visitor) override;
+    QWidget *accept(MediaVisitor &visitor) override;
 
 private:
     QString director;

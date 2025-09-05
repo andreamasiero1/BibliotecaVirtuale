@@ -1,0 +1,64 @@
+{
+    "biblioteca": [
+        {
+            "author": "J.R.R. Tolkien",
+            "copiesAvailable": 5,
+            "coverImagePath": "",
+            "isbn": "978-0544003415",
+            "publisher": "Houghton Mifflin Harcourt",
+            "title": "The Lord of the Rings",
+            "type": "Book",
+            "year": 1954
+        },
+        {
+            "author": "George Orwell",
+            "copiesAvailable": 3,
+            "coverImagePath": "",
+            "isbn": "978-0451524935",
+            "publisher": "Harcourt Brace",
+            "title": "1984",
+            "type": "Book",
+            "year": 1949
+        },
+        {
+            "copiesAvailable": 2,
+            "coverImagePath": "",
+            "director": "Peter Jackson",
+            "duration": 178,
+            "genre": "Fantasy",
+            "title": "The Lord of the Rings: The Fellowship of the Ring",
+            "type": "Film",
+            "year": 2001
+        },
+        {
+            "copiesAvailable": 4,
+            "coverImagePath": "",
+            "director": "Christopher Nolan",
+            "duration": 148,
+            "genre": "Sci-Fi",
+            "title": "Inception",
+            "type": "Film",
+            "year": 2010
+        },
+        {
+            "author": "IPCC",
+            "copiesAvailable": 1,
+            "coverImagePath": "",
+            "doi": "10.1017/9781009157949",
+            "magazine": "Cambridge University Press",
+            "title": "Climate Change 2022: Mitigation of Climate Change",
+            "type": "MagazineArticle",
+            "year": 2022
+        },
+        {
+            "author": "Google AI Quantum Team",
+            "copiesAvailable": 1,
+            "coverImagePath": "",
+            "doi": "10.1038/s41586-019-1666-5",
+            "magazine": "Nature",
+            "title": "Quantum Supremacy Using a Programmable Superconducting Processor",
+            "type": "MagazineArticle",
+            "year": 2019
+        }
+    ]
+}

@@ -5,11 +5,10 @@
 #include <QString>
 #include "Media.h"
 #include "../view/Container.h"
-#include "../view/Exception.h"
+#include "../view/Exceptions.h"
 
 class MediaCollectorVisitor;
 
-// Filtro per i media
 namespace MediaFilter
 {
     enum class FilterType
@@ -17,7 +16,7 @@ namespace MediaFilter
         ALL,
         BOOKS_ONLY,
         FILMS_ONLY,
-        MAGAZINES_ONLY
+        ARTICLES_ONLY
     };
 }
 
@@ -26,22 +25,26 @@ class Biblioteca
 public:
     Biblioteca();
     ~Biblioteca();
+
     Biblioteca(const Biblioteca &other);
     Biblioteca &operator=(const Biblioteca &other);
 
     void aggiungiMedia(Media *media);
-    void rimuoviMedia(Media *media);
-    void *rimuoviMediaAt(int index);
+    bool rimuoviMedia(Media *media);
+    void rimuoviMediaAt(int index);
     Media *getMediaAt(int index) const;
-    QList<Media *>cercaPerTitolo(const QString &titolo) const;
-    QList<Media *>cercaPerAnno(int anno)const;
+    QList<Media *> cercaPerTitolo(const QString &titolo) const;
+    QList<Media *> cercaPerAnno(int anno) const;
     QList<Media *> getTuttiMedia() const;
 
+    QList<Media *> collectMediaByType(MediaFilter::FilterType filterType) const;
+
     void svuota();
-    int dimensione () const;
+    int dimensione() const;
     bool isEmpty() const;
+
 private:
-    Container<Media*> mediaContainer;
+    Container<Media> mediaContainer;
 };
 
 #endif // BIBLIOTECA_H
