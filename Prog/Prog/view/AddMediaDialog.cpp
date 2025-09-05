@@ -7,6 +7,8 @@
 #include <QHBoxLayout>
 #include <QDialogButtonBox>
 #include <QPixmap>
+#include <QDir>
+#include <QFileInfo>
 
 AddMediaDialog::AddMediaDialog(Biblioteca &biblioteca, QWidget *parent) : QDialog(parent), biblioteca(biblioteca)
 {
@@ -117,7 +119,9 @@ void AddMediaDialog::onMediaTypeChanged(int index)
 
 void AddMediaDialog::selectCoverImage()
 {
-    QString imagePath = QFileDialog::getOpenFileName(this, "Seleziona Immagine di Copertina", "./biblioteca_virtuale/resources/images/", "Immagini (*.png *.jpg *.jpeg *.gif)");
+    QString defaultDir = QDir::currentPath() + "/data/images";
+    QDir().mkpath(defaultDir);
+    QString imagePath = QFileDialog::getOpenFileName(this, "Seleziona Immagine di Copertina", defaultDir, "Immagini (*.png *.jpg *.jpeg *.gif)");
     if (!imagePath.isEmpty())
     {
         selectedCoverImagePath = imagePath;

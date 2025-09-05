@@ -8,6 +8,7 @@
 #include <QDialogButtonBox>
 #include <QPixmap>
 #include <QFileInfo>
+#include <QDir>
 
 EditMediaDialog::EditMediaDialog(Biblioteca &biblioteca, Media *mediaToEdit, QWidget *parent)
     : QDialog(parent), biblioteca(biblioteca), currentMedia(mediaToEdit)
@@ -142,8 +143,10 @@ void EditMediaDialog::populateFields()
 
 void EditMediaDialog::selectCoverImage()
 {
+    QString defaultDir = QDir::currentPath() + "/data/images";
+    QDir().mkpath(defaultDir);
     QString imagePath = QFileDialog::getOpenFileName(this, "Seleziona Immagine di Copertina",
-                                                     "./biblioteca_virtuale/resources/images/",
+                                                     defaultDir,
                                                      "Immagini (*.png *.jpg *.jpeg *.gif)");
     if (!imagePath.isEmpty())
     {
