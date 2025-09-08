@@ -311,7 +311,7 @@ void MainWindow::addMedia()
         if (selectedType == "Libro")
         {
             newMedia = new Book(editVisitor->getTitle(), editVisitor->getYear(),
-                                editVisitor->getAuthor(), editVisitor->getISBN(),
+                                editVisitor->getAuthor(), editVisitor->getIsbn(),
                                 editVisitor->getPublisher(), editVisitor->getCoverImagePath());
         }
         else if (selectedType == "Film")
@@ -394,7 +394,7 @@ void MainWindow::editMedia()
         if (Book *book = dynamic_cast<Book *>(selectedMedia))
         {
             book->setAuthor(editVisitor->getAuthor());
-            book->setISBN(editVisitor->getISBN());
+            book->setIsbn(editVisitor->getIsbn());
             book->setPublisher(editVisitor->getPublisher());
         }
         else if (Film *film = dynamic_cast<Film *>(selectedMedia))

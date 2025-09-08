@@ -37,7 +37,7 @@ public:
     int getCopiesAvailable() const;
 
     QString getAuthor() const;
-    QString getISBN() const;
+    QString getIsbn() const;
     QString getPublisher() const;
     QString getDirector() const;
     int getDuration() const;

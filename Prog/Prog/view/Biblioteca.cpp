@@ -1,8 +1,8 @@
 #include "Biblioteca.h"
-#include "Book.h"
-#include "Film.h"
-#include "MagazineArticle.h"
-#include "../view/MediaCollectorVisitor.h"
+#include "../model/Book.h"
+#include "../model/Film.h"
+#include "../model/MagazineArticle.h"
+#include "MediaCollectorVisitor.h"
 
 Biblioteca::Biblioteca() {}
 
@@ -30,7 +30,7 @@ void Biblioteca::aggiungiMedia(Media *media)
     {
         mediaContainer.add(media);
     }
-    catch (const BibliotecaException &e)
+    catch (const BibliotecaException &)
     {
         throw;
     }

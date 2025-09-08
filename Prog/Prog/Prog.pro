@@ -14,7 +14,7 @@ INCLUDEPATH += .
 #DEFINES += QT_DISABLE_DEPRECATED_UP_TO=0x060000 # disables all APIs deprecated in Qt 6.0.0 and earlier
 
 # Input
-HEADERS += model/Biblioteca.h \
+HEADERS += view/Biblioteca.h \
            model/Book.h \
            model/Film.h \
            model/MagazineArticle.h \
@@ -31,7 +31,7 @@ HEADERS += model/Biblioteca.h \
            view/User.h \
            view/UserAuthenticator.h
 SOURCES += main.cpp \
-           model/Biblioteca.cpp \
+           view/Biblioteca.cpp \
            model/Book.cpp \
            model/Film.cpp \
            model/MagazineArticle.cpp \

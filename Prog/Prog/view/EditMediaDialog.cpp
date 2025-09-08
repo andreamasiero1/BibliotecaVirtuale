@@ -122,7 +122,7 @@ void EditMediaDialog::populateFields()
     {
         stackedWidget->setCurrentIndex(0); // Book is at index 0
         bookAuthorEdit->setText(book->getAuthor());
-        bookIsbnEdit->setText(book->getISBN());
+        bookIsbnEdit->setText(book->getIsbn());
         bookPublisherEdit->setText(book->getPublisher());
     }
     else if (Film *film = dynamic_cast<Film *>(currentMedia))
@@ -178,7 +178,7 @@ void EditMediaDialog::editMediaConfirmed()
     if (Book *book = dynamic_cast<Book *>(currentMedia))
     {
         book->setAuthor(bookAuthorEdit->text());
-        book->setISBN(bookIsbnEdit->text());
+        book->setIsbn(bookIsbnEdit->text());
         book->setPublisher(bookPublisherEdit->text());
     }
     else if (Film *film = dynamic_cast<Film *>(currentMedia))

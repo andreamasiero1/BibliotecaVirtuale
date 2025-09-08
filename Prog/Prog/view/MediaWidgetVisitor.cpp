@@ -6,11 +6,12 @@
 #include <QFont>
 
 MediaWidgetVisitor::MediaWidgetVisitor(bool isEditMode)
-    : editMode(isEditMode), currentWidget(nullptr),
-      titleEdit(nullptr), yearSpin(nullptr), coverImageEdit(nullptr), browseImageBtn(nullptr),
-      authorEdit(nullptr), isbnEdit(nullptr), publisherEdit(nullptr),
-      directorEdit(nullptr), durationSpin(nullptr), genreEdit(nullptr),
-      articleAuthorEdit(nullptr), magazineEdit(nullptr), doiEdit(nullptr), copiesSpin(nullptr) {}
+        : editMode(isEditMode), currentWidget(nullptr),
+            titleEdit(nullptr), yearSpin(nullptr), coverImageEdit(nullptr), browseImageBtn(nullptr),
+            copiesSpin(nullptr),
+            authorEdit(nullptr), isbnEdit(nullptr), publisherEdit(nullptr),
+            directorEdit(nullptr), durationSpin(nullptr), genreEdit(nullptr),
+            articleAuthorEdit(nullptr), magazineEdit(nullptr), doiEdit(nullptr) {}
 MediaWidgetVisitor::~MediaWidgetVisitor() {}
 
 QWidget *MediaWidgetVisitor::visit(Book *book)
@@ -37,7 +38,7 @@ QWidget *MediaWidgetVisitor::visit(Book *book)
         {
             populateFields(book);
             authorEdit->setText(book->getAuthor());
-            isbnEdit->setText(book->getISBN());
+            isbnEdit->setText(book->getIsbn());
             publisherEdit->setText(book->getPublisher());
         }
     }
@@ -45,13 +46,14 @@ QWidget *MediaWidgetVisitor::visit(Book *book)
     {
         // modalità display
         currentWidget = createBaseWidget(book->getTitle(), book->getYear(), book->getCoverImagePath());
-        addBookSpecificInfo(currentWidget, book->getAuthor(), book->getISBN(), book->getPublisher());
+        addBookSpecificInfo(currentWidget, book->getAuthor(), book->getIsbn(), book->getPublisher());
         if (QLabel *copiesLabel = currentWidget->findChild<QLabel *>("copiesLabel"))
         {
             copiesLabel->setText(QString("Copie disponibili: %1").arg(book->getCopiesAvailable()));
         }
         return currentWidget;
     }
+    return currentWidget;
 }
 
 QWidget *MediaWidgetVisitor::visit(Film *film)
@@ -240,8 +242,6 @@ void MediaWidgetVisitor::addBookSpecificInfo(QWidget *widget, const QString &aut
     isbnLabel->setStyleSheet("color: #666; font-size: 9px; padding: 2px;");
     layout->addWidget(isbnLabel);
 
-    QLabel *copiesLabel = widget->findChild<QLabel *>("copiesLabel");
-
     layout->addStretch();
 }
 
@@ -374,7 +374,7 @@ QString MediaWidgetVisitor::getAuthor() const
     return authorEdit ? authorEdit->text() : QString();
 }
 
-QString MediaWidgetVisitor::getISBN() const
+QString MediaWidgetVisitor::getIsbn() const
 {
     return isbnEdit ? isbnEdit->text() : QString();
 }

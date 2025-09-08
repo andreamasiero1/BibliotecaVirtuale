@@ -1,16 +1,22 @@
 #include "Book.h"
 #include "../view/MediaVisitor.h"
 
-Book::Book(const QString &title, int year, const QString &author, const QString &isbn, const QString &publisher, const QString &coverImagePath) : Media(title, year, coverImagePath), author(author), isbn(isbn), publisher(publisher) {}
+Book::Book(const QString &title, int year, const QString &author, const QString &isbn, const QString &publisher, const QString &coverImagePath)
+    : Media(title, year, coverImagePath), author(author), isbn(isbn), publisher(publisher)
+{
+}
 
-Book::Book(const Book &other) : Media(other), author(other.author), isbn(other.isbn), publisher(other.publisher) {}
+Book::Book(const Book &other)
+    : Media(other), author(other.author), isbn(other.isbn), publisher(other.publisher)
+{
+}
 
 QString Book::getAuthor() const
 {
     return author;
 }
 
-QString Book::getISBN() const
+QString Book::getIsbn() const
 {
     return isbn;
 }
@@ -20,42 +26,43 @@ QString Book::getPublisher() const
     return publisher;
 }
 
-void Book::setAuthor(const QString &newauthor)
+void Book::setAuthor(const QString &newAuthor)
 {
-    author = newauthor;
+    author = newAuthor;
 }
 
-void Book::setISBN(const QString &newisbn)
+void Book::setIsbn(const QString &newIsbn)
 {
-    isbn = newisbn;
+    isbn = newIsbn;
 }
 
-void Book::setPublisher(const QString &newpublisher)
+void Book::setPublisher(const QString &newPublisher)
 {
-    publisher = newpublisher;
+    publisher = newPublisher;
 }
 
 QString Book::visualizzaDettagli() const
 {
-    return QString("Libro: %1 (%2)\nAutore: %3\nISBN: %4\nEditore: %5\nCopie disponibili: %6")
-        .arg(getTitle())
-        .arg(getYear())
+    return QString("Libro: %1 (%2)\nAutore: %3\nISBN: %4\nEditore: %5\nCopie disponibili: %7\nCopertina: %6")
+        .arg(title)
+        .arg(year)
         .arg(author)
         .arg(isbn)
         .arg(publisher)
+        .arg(coverImagePath)
         .arg(getCopiesAvailable());
 }
 
 QJsonObject Book::serializza() const
 {
     QJsonObject jsonObject;
-    jsonObject["type"] = "Book"; // utile per Media::deserializza
-    jsonObject["title"] = getTitle();
-    jsonObject["year"] = getYear();
+    jsonObject["type"] = "Book";
+    jsonObject["title"] = title;
+    jsonObject["year"] = year;
     jsonObject["author"] = author;
     jsonObject["isbn"] = isbn;
     jsonObject["publisher"] = publisher;
-    jsonObject["coverImagePath"] = getCoverImagePath(); // <— aggiunto
+    jsonObject["coverImagePath"] = coverImagePath;
     jsonObject["copiesAvailable"] = getCopiesAvailable();
     return jsonObject;
 }

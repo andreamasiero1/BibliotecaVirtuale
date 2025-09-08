@@ -11,7 +11,7 @@
 #include <QFormLayout>
 #include <QMessageBox>
 #include <QFileDialog>
-#include "../model/Biblioteca.h"
+#include "Biblioteca.h"
 #include "../model/Media.h"
 
 class EditMediaDialog : public QDialog {

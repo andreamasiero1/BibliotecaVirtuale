@@ -53,7 +53,7 @@ OBJECTS_DIR   = ./
 ####### Files
 
 SOURCES       = main.cpp \
-		model/Biblioteca.cpp \
+		view/Biblioteca.cpp \
 		model/Book.cpp \
 		model/Film.cpp \
 		model/MagazineArticle.cpp \
@@ -465,7 +465,7 @@ DIST          = /opt/homebrew/share/qt/mkspecs/features/spec_pre.prf \
 		/opt/homebrew/share/qt/mkspecs/features/exceptions.prf \
 		/opt/homebrew/share/qt/mkspecs/features/yacc.prf \
 		/opt/homebrew/share/qt/mkspecs/features/lex.prf \
-		Prog.pro model/Biblioteca.h \
+		Prog.pro view/Biblioteca.h \
 		model/Book.h \
 		model/Film.h \
 		model/MagazineArticle.h \
@@ -481,7 +481,7 @@ DIST          = /opt/homebrew/share/qt/mkspecs/features/spec_pre.prf \
 		view/MediaWidgetVisitor.h \
 		view/User.h \
 		view/UserAuthenticator.h main.cpp \
-		model/Biblioteca.cpp \
+		view/Biblioteca.cpp \
 		model/Book.cpp \
 		model/Film.cpp \
 		model/MagazineArticle.cpp \
@@ -1298,8 +1298,8 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents /opt/homebrew/share/qt/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents model/Biblioteca.h model/Book.h model/Film.h model/MagazineArticle.h model/Media.h persistence/JsonSerializer.h view/AddMediaDialog.h view/EditMediaDialog.h view/LoginDialog.h view/MainWindow.h view/MediaCollectorVisitor.h view/MediaFactory.h view/MediaVisitor.h view/MediaWidgetVisitor.h view/User.h view/UserAuthenticator.h $(DISTDIR)/
-	$(COPY_FILE) --parents main.cpp model/Biblioteca.cpp model/Book.cpp model/Film.cpp model/MagazineArticle.cpp model/Media.cpp persistence/JsonSerializer.cpp view/AddMediaDialog.cpp view/EditMediaDialog.cpp view/LoginDialog.cpp view/MainWindow.cpp view/MediaCollectorVisitor.cpp view/MediaFactory.cpp view/MediaWidgetVisitor.cpp view/User.cpp view/UserAuthenticator.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents view/Biblioteca.h model/Book.h model/Film.h model/MagazineArticle.h model/Media.h persistence/JsonSerializer.h view/AddMediaDialog.h view/EditMediaDialog.h view/LoginDialog.h view/MainWindow.h view/MediaCollectorVisitor.h view/MediaFactory.h view/MediaVisitor.h view/MediaWidgetVisitor.h view/User.h view/UserAuthenticator.h $(DISTDIR)/
+	$(COPY_FILE) --parents main.cpp view/Biblioteca.cpp model/Book.cpp model/Film.cpp model/MagazineArticle.cpp model/Media.cpp persistence/JsonSerializer.cpp view/AddMediaDialog.cpp view/EditMediaDialog.cpp view/LoginDialog.cpp view/MainWindow.cpp view/MediaCollectorVisitor.cpp view/MediaFactory.cpp view/MediaWidgetVisitor.cpp view/User.cpp view/UserAuthenticator.cpp $(DISTDIR)/
 
 
 clean: compiler_clean 
@@ -1358,7 +1358,7 @@ moc_AddMediaDialog.cpp: view/AddMediaDialog.h \
 		/opt/homebrew/lib/QtWidgets.framework/Headers/qmessagebox.h \
 		/opt/homebrew/lib/QtWidgets.framework/Headers/QFileDialog \
 		/opt/homebrew/lib/QtWidgets.framework/Headers/qfiledialog.h \
-		model/Biblioteca.h \
+		view/Biblioteca.h \
 		/opt/homebrew/lib/QtCore.framework/Headers/QList \
 		/opt/homebrew/lib/QtCore.framework/Headers/qlist.h \
 		/opt/homebrew/lib/QtCore.framework/Headers/QString \
@@ -1366,6 +1366,8 @@ moc_AddMediaDialog.cpp: view/AddMediaDialog.h \
 		model/Media.h \
 		/opt/homebrew/lib/QtCore.framework/Headers/QJsonObject \
 		/opt/homebrew/lib/QtCore.framework/Headers/qjsonobject.h \
+		view/Container.h \
+		view/Exceptions.h \
 		view/MediaFactory.h \
 		model/Book.h \
 		view/MediaVisitor.h \
@@ -1396,7 +1398,7 @@ moc_EditMediaDialog.cpp: view/EditMediaDialog.h \
 		/opt/homebrew/lib/QtWidgets.framework/Headers/qmessagebox.h \
 		/opt/homebrew/lib/QtWidgets.framework/Headers/QFileDialog \
 		/opt/homebrew/lib/QtWidgets.framework/Headers/qfiledialog.h \
-		model/Biblioteca.h \
+		view/Biblioteca.h \
 		/opt/homebrew/lib/QtCore.framework/Headers/QList \
 		/opt/homebrew/lib/QtCore.framework/Headers/qlist.h \
 		/opt/homebrew/lib/QtCore.framework/Headers/QString \
@@ -1404,6 +1406,8 @@ moc_EditMediaDialog.cpp: view/EditMediaDialog.h \
 		model/Media.h \
 		/opt/homebrew/lib/QtCore.framework/Headers/QJsonObject \
 		/opt/homebrew/lib/QtCore.framework/Headers/qjsonobject.h \
+		view/Container.h \
+		view/Exceptions.h \
 		moc_predefs.h \
 		/opt/homebrew/share/qt/libexec/moc
 	/opt/homebrew/share/qt/libexec/moc $(DEFINES) --include /Users/andreamasiero/Documents/BibliotecaVirtuale/Prog/Prog/moc_predefs.h -I/opt/homebrew/share/qt/mkspecs/macx-clang -I/Users/andreamasiero/Documents/BibliotecaVirtuale/Prog/Prog -I/Users/andreamasiero/Documents/BibliotecaVirtuale/Prog/Prog -I/opt/homebrew/lib/QtWidgets.framework/Headers -I/opt/homebrew/lib/QtGui.framework/Headers -I/opt/homebrew/lib/QtCore.framework/Headers -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.5.sdk/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/17/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.5.sdk/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -F/opt/homebrew/lib view/EditMediaDialog.h -o moc_EditMediaDialog.cpp
@@ -1490,6 +1494,8 @@ moc_MainWindow.cpp: view/MainWindow.h \
 		model/Media.h \
 		/opt/homebrew/lib/QtCore.framework/Headers/QJsonObject \
 		/opt/homebrew/lib/QtCore.framework/Headers/qjsonobject.h \
+		view/Container.h \
+		view/Exceptions.h \
 		persistence/JsonSerializer.h \
 		/opt/homebrew/lib/QtCore.framework/Headers/QJsonArray \
 		/opt/homebrew/lib/QtCore.framework/Headers/qjsonarray.h \
@@ -1617,6 +1623,8 @@ main.o: main.cpp /opt/homebrew/lib/QtWidgets.framework/Headers/QApplication \
 		model/Media.h \
 		/opt/homebrew/lib/QtCore.framework/Headers/QJsonObject \
 		/opt/homebrew/lib/QtCore.framework/Headers/qjsonobject.h \
+		view/Container.h \
+		view/Exceptions.h \
 		persistence/JsonSerializer.h \
 		/opt/homebrew/lib/QtCore.framework/Headers/QJsonArray \
 		/opt/homebrew/lib/QtCore.framework/Headers/qjsonarray.h \
@@ -1649,7 +1657,7 @@ main.o: main.cpp /opt/homebrew/lib/QtWidgets.framework/Headers/QApplication \
 		view/User.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o main.cpp
 
-Biblioteca.o: model/Biblioteca.cpp model/Biblioteca.h \
+Biblioteca.o: view/Biblioteca.cpp view/Biblioteca.h \
 		/opt/homebrew/lib/QtCore.framework/Headers/QList \
 		/opt/homebrew/lib/QtCore.framework/Headers/qlist.h \
 		/opt/homebrew/lib/QtCore.framework/Headers/QString \
@@ -1657,11 +1665,15 @@ Biblioteca.o: model/Biblioteca.cpp model/Biblioteca.h \
 		model/Media.h \
 		/opt/homebrew/lib/QtCore.framework/Headers/QJsonObject \
 		/opt/homebrew/lib/QtCore.framework/Headers/qjsonobject.h \
+		view/Container.h \
+		view/Exceptions.h \
 		model/Book.h \
 		view/MediaVisitor.h \
 		model/Film.h \
-		view/MediaCollectorVisitor.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Biblioteca.o model/Biblioteca.cpp
+		model/MagazineArticle.h \
+		view/MediaCollectorVisitor.h \
+		model/Biblioteca.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Biblioteca.o view/Biblioteca.cpp
 
 Book.o: model/Book.cpp model/Book.h \
 		model/Media.h \
@@ -1714,6 +1726,8 @@ JsonSerializer.o: persistence/JsonSerializer.cpp persistence/JsonSerializer.h \
 		/opt/homebrew/lib/QtCore.framework/Headers/QList \
 		/opt/homebrew/lib/QtCore.framework/Headers/qlist.h \
 		model/Media.h \
+		view/Container.h \
+		view/Exceptions.h \
 		view/MediaFactory.h \
 		model/Book.h \
 		view/MediaVisitor.h \
@@ -1748,7 +1762,7 @@ AddMediaDialog.o: view/AddMediaDialog.cpp view/AddMediaDialog.h \
 		/opt/homebrew/lib/QtWidgets.framework/Headers/qmessagebox.h \
 		/opt/homebrew/lib/QtWidgets.framework/Headers/QFileDialog \
 		/opt/homebrew/lib/QtWidgets.framework/Headers/qfiledialog.h \
-		model/Biblioteca.h \
+		view/Biblioteca.h \
 		/opt/homebrew/lib/QtCore.framework/Headers/QList \
 		/opt/homebrew/lib/QtCore.framework/Headers/qlist.h \
 		/opt/homebrew/lib/QtCore.framework/Headers/QString \
@@ -1756,6 +1770,8 @@ AddMediaDialog.o: view/AddMediaDialog.cpp view/AddMediaDialog.h \
 		model/Media.h \
 		/opt/homebrew/lib/QtCore.framework/Headers/QJsonObject \
 		/opt/homebrew/lib/QtCore.framework/Headers/qjsonobject.h \
+		view/Container.h \
+		view/Exceptions.h \
 		view/MediaFactory.h \
 		model/Book.h \
 		view/MediaVisitor.h \
@@ -1767,7 +1783,11 @@ AddMediaDialog.o: view/AddMediaDialog.cpp view/AddMediaDialog.h \
 		/opt/homebrew/lib/QtWidgets.framework/Headers/QDialogButtonBox \
 		/opt/homebrew/lib/QtWidgets.framework/Headers/qdialogbuttonbox.h \
 		/opt/homebrew/lib/QtGui.framework/Headers/QPixmap \
-		/opt/homebrew/lib/QtGui.framework/Headers/qpixmap.h
+		/opt/homebrew/lib/QtGui.framework/Headers/qpixmap.h \
+		/opt/homebrew/lib/QtCore.framework/Headers/QDir \
+		/opt/homebrew/lib/QtCore.framework/Headers/qdir.h \
+		/opt/homebrew/lib/QtCore.framework/Headers/QFileInfo \
+		/opt/homebrew/lib/QtCore.framework/Headers/qfileinfo.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o AddMediaDialog.o view/AddMediaDialog.cpp
 
 EditMediaDialog.o: view/EditMediaDialog.cpp view/EditMediaDialog.h \
@@ -1791,7 +1811,7 @@ EditMediaDialog.o: view/EditMediaDialog.cpp view/EditMediaDialog.h \
 		/opt/homebrew/lib/QtWidgets.framework/Headers/qmessagebox.h \
 		/opt/homebrew/lib/QtWidgets.framework/Headers/QFileDialog \
 		/opt/homebrew/lib/QtWidgets.framework/Headers/qfiledialog.h \
-		model/Biblioteca.h \
+		view/Biblioteca.h \
 		/opt/homebrew/lib/QtCore.framework/Headers/QList \
 		/opt/homebrew/lib/QtCore.framework/Headers/qlist.h \
 		/opt/homebrew/lib/QtCore.framework/Headers/QString \
@@ -1799,6 +1819,8 @@ EditMediaDialog.o: view/EditMediaDialog.cpp view/EditMediaDialog.h \
 		model/Media.h \
 		/opt/homebrew/lib/QtCore.framework/Headers/QJsonObject \
 		/opt/homebrew/lib/QtCore.framework/Headers/qjsonobject.h \
+		view/Container.h \
+		view/Exceptions.h \
 		model/Book.h \
 		view/MediaVisitor.h \
 		model/Film.h \
@@ -1811,7 +1833,9 @@ EditMediaDialog.o: view/EditMediaDialog.cpp view/EditMediaDialog.h \
 		/opt/homebrew/lib/QtGui.framework/Headers/QPixmap \
 		/opt/homebrew/lib/QtGui.framework/Headers/qpixmap.h \
 		/opt/homebrew/lib/QtCore.framework/Headers/QFileInfo \
-		/opt/homebrew/lib/QtCore.framework/Headers/qfileinfo.h
+		/opt/homebrew/lib/QtCore.framework/Headers/qfileinfo.h \
+		/opt/homebrew/lib/QtCore.framework/Headers/QDir \
+		/opt/homebrew/lib/QtCore.framework/Headers/qdir.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o EditMediaDialog.o view/EditMediaDialog.cpp
 
 LoginDialog.o: view/LoginDialog.cpp view/LoginDialog.h \
@@ -1851,7 +1875,11 @@ LoginDialog.o: view/LoginDialog.cpp view/LoginDialog.h \
 		/opt/homebrew/lib/QtWidgets.framework/Headers/QApplication \
 		/opt/homebrew/lib/QtWidgets.framework/Headers/qapplication.h \
 		/opt/homebrew/lib/QtCore.framework/Headers/QCoreApplication \
-		/opt/homebrew/lib/QtCore.framework/Headers/qcoreapplication.h
+		/opt/homebrew/lib/QtCore.framework/Headers/qcoreapplication.h \
+		/opt/homebrew/lib/QtCore.framework/Headers/QDir \
+		/opt/homebrew/lib/QtCore.framework/Headers/qdir.h \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/QInputDialog \
+		/opt/homebrew/lib/QtWidgets.framework/Headers/qinputdialog.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o LoginDialog.o view/LoginDialog.cpp
 
 MainWindow.o: view/MainWindow.cpp view/MainWindow.h \
@@ -1898,6 +1926,8 @@ MainWindow.o: view/MainWindow.cpp view/MainWindow.h \
 		model/Media.h \
 		/opt/homebrew/lib/QtCore.framework/Headers/QJsonObject \
 		/opt/homebrew/lib/QtCore.framework/Headers/qjsonobject.h \
+		view/Container.h \
+		view/Exceptions.h \
 		persistence/JsonSerializer.h \
 		/opt/homebrew/lib/QtCore.framework/Headers/QJsonArray \
 		/opt/homebrew/lib/QtCore.framework/Headers/qjsonarray.h \
@@ -1937,6 +1967,8 @@ MediaCollectorVisitor.o: view/MediaCollectorVisitor.cpp view/MediaCollectorVisit
 		model/Media.h \
 		/opt/homebrew/lib/QtCore.framework/Headers/QJsonObject \
 		/opt/homebrew/lib/QtCore.framework/Headers/qjsonobject.h \
+		view/Container.h \
+		view/Exceptions.h \
 		model/Book.h \
 		model/Film.h \
 		model/MagazineArticle.h
@@ -1952,6 +1984,7 @@ MediaFactory.o: view/MediaFactory.cpp view/MediaFactory.h \
 		view/MediaVisitor.h \
 		model/Film.h \
 		model/MagazineArticle.h \
+		view/Exceptions.h \
 		/opt/homebrew/lib/QtCore.framework/Headers/QStringList \
 		/opt/homebrew/lib/QtCore.framework/Headers/qstringlist.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o MediaFactory.o view/MediaFactory.cpp

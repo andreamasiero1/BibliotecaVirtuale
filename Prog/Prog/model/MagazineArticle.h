@@ -9,7 +9,6 @@ class MagazineArticle : public Media
 public:
     MagazineArticle(const QString &title, int year, const QString &author, const QString &magazine, const QString &doi, const QString &coverImagePath = "");
 
-    // Costruttore di copia
     MagazineArticle(const MagazineArticle &other);
 
     QString getAuthor() const;
