@@ -19,7 +19,7 @@
 #include <QDialog>
 #include <QTimer>
 #include <QCoreApplication>
-#include "../model/Biblioteca.h"
+#include "Biblioteca.h"
 #include "Exceptions.h"
 #include "../persistence/JsonSerializer.h"
 #include "MediaWidgetVisitor.h"

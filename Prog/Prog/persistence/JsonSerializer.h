@@ -5,7 +5,7 @@
 #include <QJsonObject>
 #include <QJsonArray>
 #include <QJsonDocument>
-#include "../model/Biblioteca.h"
+#include "../view/Biblioteca.h"
 #include "../view/Exceptions.h"
 #include "../view/MediaFactory.h"
 

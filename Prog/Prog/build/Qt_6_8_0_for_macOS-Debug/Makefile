@@ -53,7 +53,7 @@ OBJECTS_DIR   = ./
 ####### Files
 
 SOURCES       = ../../main.cpp \
-		../../model/Biblioteca.cpp \
+		../../view/Biblioteca.cpp \
 		../../model/Book.cpp \
 		../../model/Film.cpp \
 		../../model/MagazineArticle.cpp \
@@ -304,7 +304,7 @@ DIST          = /Users/andreamasiero/Qt/6.8.0/macos/mkspecs/features/spec_pre.pr
 		/Users/andreamasiero/Qt/6.8.0/macos/mkspecs/features/exceptions.prf \
 		/Users/andreamasiero/Qt/6.8.0/macos/mkspecs/features/yacc.prf \
 		/Users/andreamasiero/Qt/6.8.0/macos/mkspecs/features/lex.prf \
-		../../../../Prog.pro ../../model/Biblioteca.h \
+		../../../../Prog.pro ../../view/Biblioteca.h \
 		../../model/Book.h \
 		../../model/Film.h \
 		../../model/MagazineArticle.h \
@@ -320,7 +320,7 @@ DIST          = /Users/andreamasiero/Qt/6.8.0/macos/mkspecs/features/spec_pre.pr
 		../../view/MediaWidgetVisitor.h \
 		../../view/User.h \
 		../../view/UserAuthenticator.h ../../main.cpp \
-		../../model/Biblioteca.cpp \
+		../../view/Biblioteca.cpp \
 		../../model/Book.cpp \
 		../../model/Film.cpp \
 		../../model/MagazineArticle.cpp \
@@ -814,8 +814,8 @@ dist: distdir FORCE
 distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
-	$(COPY_FILE) --parents ../../model/Biblioteca.h ../../model/Book.h ../../model/Film.h ../../model/MagazineArticle.h ../../model/Media.h ../../persistence/JsonSerializer.h ../../view/AddMediaDialog.h ../../view/EditMediaDialog.h ../../view/LoginDialog.h ../../view/MainWindow.h ../../view/MediaCollectorVisitor.h ../../view/MediaFactory.h ../../view/MediaVisitor.h ../../view/MediaWidgetVisitor.h ../../view/User.h ../../view/UserAuthenticator.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../../main.cpp ../../model/Biblioteca.cpp ../../model/Book.cpp ../../model/Film.cpp ../../model/MagazineArticle.cpp ../../model/Media.cpp ../../persistence/JsonSerializer.cpp ../../view/AddMediaDialog.cpp ../../view/EditMediaDialog.cpp ../../view/LoginDialog.cpp ../../view/MainWindow.cpp ../../view/MediaCollectorVisitor.cpp ../../view/MediaFactory.cpp ../../view/MediaWidgetVisitor.cpp ../../view/User.cpp ../../view/UserAuthenticator.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../../view/Biblioteca.h ../../model/Book.h ../../model/Film.h ../../model/MagazineArticle.h ../../model/Media.h ../../persistence/JsonSerializer.h ../../view/AddMediaDialog.h ../../view/EditMediaDialog.h ../../view/LoginDialog.h ../../view/MainWindow.h ../../view/MediaCollectorVisitor.h ../../view/MediaFactory.h ../../view/MediaVisitor.h ../../view/MediaWidgetVisitor.h ../../view/User.h ../../view/UserAuthenticator.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../../main.cpp ../../view/Biblioteca.cpp ../../model/Book.cpp ../../model/Film.cpp ../../model/MagazineArticle.cpp ../../model/Media.cpp ../../persistence/JsonSerializer.cpp ../../view/AddMediaDialog.cpp ../../view/EditMediaDialog.cpp ../../view/LoginDialog.cpp ../../view/MainWindow.cpp ../../view/MediaCollectorVisitor.cpp ../../view/MediaFactory.cpp ../../view/MediaWidgetVisitor.cpp ../../view/User.cpp ../../view/UserAuthenticator.cpp $(DISTDIR)/
 
 
 clean: compiler_clean 
@@ -867,7 +867,7 @@ moc_AddMediaDialog.cpp: ../../view/AddMediaDialog.h \
 		/Users/andreamasiero/Qt/6.8.0/macos/lib/QtWidgets.framework/Headers/qmessagebox.h \
 		/Users/andreamasiero/Qt/6.8.0/macos/lib/QtWidgets.framework/Headers/QFileDialog \
 		/Users/andreamasiero/Qt/6.8.0/macos/lib/QtWidgets.framework/Headers/qfiledialog.h \
-		../../model/Biblioteca.h \
+		../../view/Biblioteca.h \
 		/Users/andreamasiero/Qt/6.8.0/macos/lib/QtCore.framework/Headers/QList \
 		/Users/andreamasiero/Qt/6.8.0/macos/lib/QtCore.framework/Headers/qlist.h \
 		/Users/andreamasiero/Qt/6.8.0/macos/lib/QtCore.framework/Headers/QString \
@@ -906,7 +906,7 @@ moc_EditMediaDialog.cpp: ../../view/EditMediaDialog.h \
 		/Users/andreamasiero/Qt/6.8.0/macos/lib/QtWidgets.framework/Headers/qmessagebox.h \
 		/Users/andreamasiero/Qt/6.8.0/macos/lib/QtWidgets.framework/Headers/QFileDialog \
 		/Users/andreamasiero/Qt/6.8.0/macos/lib/QtWidgets.framework/Headers/qfiledialog.h \
-		../../model/Biblioteca.h \
+		../../view/Biblioteca.h \
 		/Users/andreamasiero/Qt/6.8.0/macos/lib/QtCore.framework/Headers/QList \
 		/Users/andreamasiero/Qt/6.8.0/macos/lib/QtCore.framework/Headers/qlist.h \
 		/Users/andreamasiero/Qt/6.8.0/macos/lib/QtCore.framework/Headers/QString \
@@ -992,7 +992,7 @@ moc_MainWindow.cpp: ../../view/MainWindow.h \
 		/Users/andreamasiero/Qt/6.8.0/macos/lib/QtCore.framework/Headers/qtimer.h \
 		/Users/andreamasiero/Qt/6.8.0/macos/lib/QtCore.framework/Headers/QCoreApplication \
 		/Users/andreamasiero/Qt/6.8.0/macos/lib/QtCore.framework/Headers/qcoreapplication.h \
-		../../model/Biblioteca.h \
+		../../view/Biblioteca.h \
 		/Users/andreamasiero/Qt/6.8.0/macos/lib/QtCore.framework/Headers/QList \
 		/Users/andreamasiero/Qt/6.8.0/macos/lib/QtCore.framework/Headers/qlist.h \
 		/Users/andreamasiero/Qt/6.8.0/macos/lib/QtCore.framework/Headers/QString \
@@ -1119,7 +1119,7 @@ main.o: ../../main.cpp /Users/andreamasiero/Qt/6.8.0/macos/lib/QtWidgets.framewo
 		/Users/andreamasiero/Qt/6.8.0/macos/lib/QtCore.framework/Headers/qtimer.h \
 		/Users/andreamasiero/Qt/6.8.0/macos/lib/QtCore.framework/Headers/QCoreApplication \
 		/Users/andreamasiero/Qt/6.8.0/macos/lib/QtCore.framework/Headers/qcoreapplication.h \
-		../../model/Biblioteca.h \
+		../../view/Biblioteca.h \
 		/Users/andreamasiero/Qt/6.8.0/macos/lib/QtCore.framework/Headers/QList \
 		/Users/andreamasiero/Qt/6.8.0/macos/lib/QtCore.framework/Headers/qlist.h \
 		/Users/andreamasiero/Qt/6.8.0/macos/lib/QtCore.framework/Headers/QString \
@@ -1161,7 +1161,7 @@ main.o: ../../main.cpp /Users/andreamasiero/Qt/6.8.0/macos/lib/QtWidgets.framewo
 		../../view/User.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../../main.cpp
 
-Biblioteca.o: ../../model/Biblioteca.cpp ../../model/Biblioteca.h \
+Biblioteca.o: ../../view/Biblioteca.cpp ../../view/Biblioteca.h \
 		/Users/andreamasiero/Qt/6.8.0/macos/lib/QtCore.framework/Headers/QList \
 		/Users/andreamasiero/Qt/6.8.0/macos/lib/QtCore.framework/Headers/qlist.h \
 		/Users/andreamasiero/Qt/6.8.0/macos/lib/QtCore.framework/Headers/QString \
@@ -1174,8 +1174,9 @@ Biblioteca.o: ../../model/Biblioteca.cpp ../../model/Biblioteca.h \
 		../../model/Book.h \
 		../../view/MediaVisitor.h \
 		../../model/Film.h \
+		../../model/MagazineArticle.h \
 		../../view/MediaCollectorVisitor.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Biblioteca.o ../../model/Biblioteca.cpp
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Biblioteca.o ../../view/Biblioteca.cpp
 
 Book.o: ../../model/Book.cpp ../../model/Book.h \
 		../../model/Media.h \
@@ -1224,7 +1225,7 @@ JsonSerializer.o: ../../persistence/JsonSerializer.cpp ../../persistence/JsonSer
 		/Users/andreamasiero/Qt/6.8.0/macos/lib/QtCore.framework/Headers/qjsonarray.h \
 		/Users/andreamasiero/Qt/6.8.0/macos/lib/QtCore.framework/Headers/QJsonDocument \
 		/Users/andreamasiero/Qt/6.8.0/macos/lib/QtCore.framework/Headers/qjsondocument.h \
-		../../model/Biblioteca.h \
+		../../view/Biblioteca.h \
 		/Users/andreamasiero/Qt/6.8.0/macos/lib/QtCore.framework/Headers/QList \
 		/Users/andreamasiero/Qt/6.8.0/macos/lib/QtCore.framework/Headers/qlist.h \
 		../../model/Media.h \
@@ -1263,7 +1264,7 @@ AddMediaDialog.o: ../../view/AddMediaDialog.cpp ../../view/AddMediaDialog.h \
 		/Users/andreamasiero/Qt/6.8.0/macos/lib/QtWidgets.framework/Headers/qmessagebox.h \
 		/Users/andreamasiero/Qt/6.8.0/macos/lib/QtWidgets.framework/Headers/QFileDialog \
 		/Users/andreamasiero/Qt/6.8.0/macos/lib/QtWidgets.framework/Headers/qfiledialog.h \
-		../../model/Biblioteca.h \
+		../../view/Biblioteca.h \
 		/Users/andreamasiero/Qt/6.8.0/macos/lib/QtCore.framework/Headers/QList \
 		/Users/andreamasiero/Qt/6.8.0/macos/lib/QtCore.framework/Headers/qlist.h \
 		/Users/andreamasiero/Qt/6.8.0/macos/lib/QtCore.framework/Headers/QString \
@@ -1312,7 +1313,7 @@ EditMediaDialog.o: ../../view/EditMediaDialog.cpp ../../view/EditMediaDialog.h \
 		/Users/andreamasiero/Qt/6.8.0/macos/lib/QtWidgets.framework/Headers/qmessagebox.h \
 		/Users/andreamasiero/Qt/6.8.0/macos/lib/QtWidgets.framework/Headers/QFileDialog \
 		/Users/andreamasiero/Qt/6.8.0/macos/lib/QtWidgets.framework/Headers/qfiledialog.h \
-		../../model/Biblioteca.h \
+		../../view/Biblioteca.h \
 		/Users/andreamasiero/Qt/6.8.0/macos/lib/QtCore.framework/Headers/QList \
 		/Users/andreamasiero/Qt/6.8.0/macos/lib/QtCore.framework/Headers/qlist.h \
 		/Users/andreamasiero/Qt/6.8.0/macos/lib/QtCore.framework/Headers/QString \
@@ -1419,7 +1420,7 @@ MainWindow.o: ../../view/MainWindow.cpp ../../view/MainWindow.h \
 		/Users/andreamasiero/Qt/6.8.0/macos/lib/QtCore.framework/Headers/qtimer.h \
 		/Users/andreamasiero/Qt/6.8.0/macos/lib/QtCore.framework/Headers/QCoreApplication \
 		/Users/andreamasiero/Qt/6.8.0/macos/lib/QtCore.framework/Headers/qcoreapplication.h \
-		../../model/Biblioteca.h \
+		../../view/Biblioteca.h \
 		/Users/andreamasiero/Qt/6.8.0/macos/lib/QtCore.framework/Headers/QList \
 		/Users/andreamasiero/Qt/6.8.0/macos/lib/QtCore.framework/Headers/qlist.h \
 		/Users/andreamasiero/Qt/6.8.0/macos/lib/QtCore.framework/Headers/QString \
@@ -1460,7 +1461,7 @@ MainWindow.o: ../../view/MainWindow.cpp ../../view/MainWindow.h \
 
 MediaCollectorVisitor.o: ../../view/MediaCollectorVisitor.cpp ../../view/MediaCollectorVisitor.h \
 		../../view/MediaVisitor.h \
-		../../model/Biblioteca.h \
+		../../view/Biblioteca.h \
 		/Users/andreamasiero/Qt/6.8.0/macos/lib/QtCore.framework/Headers/QList \
 		/Users/andreamasiero/Qt/6.8.0/macos/lib/QtCore.framework/Headers/qlist.h \
 		/Users/andreamasiero/Qt/6.8.0/macos/lib/QtCore.framework/Headers/QString \

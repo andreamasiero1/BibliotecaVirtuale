@@ -188,7 +188,7 @@ void MainWindow::populateDisplayWithMedia(const QList<Media *> &mediaList)
 
 void MainWindow::addMediaWidgetToGrid(Media *media, int row, int col)
 {
-    MediaWidgetVisitor visitor(false); 
+    MediaWidgetVisitor visitor(false);
     media->accept(visitor);
     QWidget *widget = visitor.getWidget();
 
@@ -275,7 +275,6 @@ void MainWindow::addMedia()
         return;
     }
 
-    // Usa il visitor pattern come richiesto
     MediaVisitor *visitor = new MediaWidgetVisitor(true);
     tempMedia->accept(*visitor);
     QWidget *widget = (static_cast<MediaWidgetVisitor *>(visitor))->getWidget();
@@ -463,9 +462,27 @@ void MainWindow::searchMedia()
     }
 }
 
+namespace
+{
+    static QString librariesDir()
+    {
+        QDir base(QCoreApplication::applicationDirPath());
+#ifdef Q_OS_MAC
+        // Se è un app bundle: Contents/MacOS -> risali al parent della .app
+        if (base.dirName() == "MacOS")
+        {
+            base.cdUp(); // Contents
+            base.cdUp(); // .app
+            base.cdUp(); // cartella che contiene la .app
+        }
+#endif
+        return base.filePath("data/bibliotecas");
+    }
+}
+
 void MainWindow::saveLibrary()
 {
-    QString defaultDir = QDir::currentPath() + "/data/bibliotecas";
+    QString defaultDir = librariesDir();
     QDir().mkpath(defaultDir);
 
     QString fileName = QFileDialog::getSaveFileName(this,
@@ -496,7 +513,7 @@ void MainWindow::saveLibrary()
 
 void MainWindow::loadLibrary()
 {
-    QString defaultDir = QDir::currentPath() + "/data/bibliotecas";
+    QString defaultDir = librariesDir();
     QDir().mkpath(defaultDir);
 
     QString fileName = QFileDialog::getOpenFileName(this,
@@ -575,7 +592,8 @@ void MainWindow::loadLibrary()
 
 void MainWindow::loadDefaultLibrary()
 {
-    QString exampleFile = QDir::currentPath() + "/data/bibliotecas/biblioteca_esempio.json";
+    const QString dir = librariesDir();
+    QString exampleFile = QDir(dir).filePath("biblioteca_esempio.json");
     QFileInfo fileInfo(exampleFile);
 
     if (fileInfo.exists() && fileInfo.isReadable())

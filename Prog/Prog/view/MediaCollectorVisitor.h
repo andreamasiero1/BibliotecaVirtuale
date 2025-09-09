@@ -2,7 +2,7 @@
 #define MEDIACOLLECTORVISITOR_H
 
 #include "MediaVisitor.h"
-#include "../model/Biblioteca.h"
+#include "Biblioteca.h"
 #include <QList>
 #include <QString>
 

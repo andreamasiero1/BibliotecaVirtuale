@@ -1486,7 +1486,7 @@ moc_MainWindow.cpp: view/MainWindow.h \
 		/opt/homebrew/lib/QtCore.framework/Headers/qtimer.h \
 		/opt/homebrew/lib/QtCore.framework/Headers/QCoreApplication \
 		/opt/homebrew/lib/QtCore.framework/Headers/qcoreapplication.h \
-		model/Biblioteca.h \
+		view/Biblioteca.h \
 		/opt/homebrew/lib/QtCore.framework/Headers/QList \
 		/opt/homebrew/lib/QtCore.framework/Headers/qlist.h \
 		/opt/homebrew/lib/QtCore.framework/Headers/QString \
@@ -1615,7 +1615,7 @@ main.o: main.cpp /opt/homebrew/lib/QtWidgets.framework/Headers/QApplication \
 		/opt/homebrew/lib/QtCore.framework/Headers/qtimer.h \
 		/opt/homebrew/lib/QtCore.framework/Headers/QCoreApplication \
 		/opt/homebrew/lib/QtCore.framework/Headers/qcoreapplication.h \
-		model/Biblioteca.h \
+		view/Biblioteca.h \
 		/opt/homebrew/lib/QtCore.framework/Headers/QList \
 		/opt/homebrew/lib/QtCore.framework/Headers/qlist.h \
 		/opt/homebrew/lib/QtCore.framework/Headers/QString \
@@ -1671,8 +1671,7 @@ Biblioteca.o: view/Biblioteca.cpp view/Biblioteca.h \
 		view/MediaVisitor.h \
 		model/Film.h \
 		model/MagazineArticle.h \
-		view/MediaCollectorVisitor.h \
-		model/Biblioteca.h
+		view/MediaCollectorVisitor.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Biblioteca.o view/Biblioteca.cpp
 
 Book.o: model/Book.cpp model/Book.h \
@@ -1722,7 +1721,7 @@ JsonSerializer.o: persistence/JsonSerializer.cpp persistence/JsonSerializer.h \
 		/opt/homebrew/lib/QtCore.framework/Headers/qjsonarray.h \
 		/opt/homebrew/lib/QtCore.framework/Headers/QJsonDocument \
 		/opt/homebrew/lib/QtCore.framework/Headers/qjsondocument.h \
-		model/Biblioteca.h \
+		view/Biblioteca.h \
 		/opt/homebrew/lib/QtCore.framework/Headers/QList \
 		/opt/homebrew/lib/QtCore.framework/Headers/qlist.h \
 		model/Media.h \
@@ -1918,7 +1917,7 @@ MainWindow.o: view/MainWindow.cpp view/MainWindow.h \
 		/opt/homebrew/lib/QtCore.framework/Headers/qtimer.h \
 		/opt/homebrew/lib/QtCore.framework/Headers/QCoreApplication \
 		/opt/homebrew/lib/QtCore.framework/Headers/qcoreapplication.h \
-		model/Biblioteca.h \
+		view/Biblioteca.h \
 		/opt/homebrew/lib/QtCore.framework/Headers/QList \
 		/opt/homebrew/lib/QtCore.framework/Headers/qlist.h \
 		/opt/homebrew/lib/QtCore.framework/Headers/QString \
@@ -1959,7 +1958,7 @@ MainWindow.o: view/MainWindow.cpp view/MainWindow.h \
 
 MediaCollectorVisitor.o: view/MediaCollectorVisitor.cpp view/MediaCollectorVisitor.h \
 		view/MediaVisitor.h \
-		model/Biblioteca.h \
+		view/Biblioteca.h \
 		/opt/homebrew/lib/QtCore.framework/Headers/QList \
 		/opt/homebrew/lib/QtCore.framework/Headers/qlist.h \
 		/opt/homebrew/lib/QtCore.framework/Headers/QString \
