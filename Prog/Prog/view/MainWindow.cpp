@@ -156,7 +156,12 @@ QList<Media *> MainWindow::getFilteredMedia() const
         QList<Media *> searchResults;
         for (Media *media : allMedia)
         {
-            if (media->getTitle().contains(searchTerm, Qt::CaseInsensitive))
+            // Ricerca estesa: titolo, anno e dettagli (che contengono caratteristiche specifiche del tipo)
+            const bool matchTitle = media->getTitle().contains(searchTerm, Qt::CaseInsensitive);
+            const bool matchYear = QString::number(media->getYear()).contains(searchTerm, Qt::CaseInsensitive);
+            const bool matchDetails = media->visualizzaDettagli().contains(searchTerm, Qt::CaseInsensitive);
+
+            if (matchTitle || matchYear || matchDetails)
             {
                 searchResults.append(media);
             }
