@@ -96,17 +96,17 @@ void MainWindow::setupMenuBar()
     QMenuBar *menuBar = this->menuBar();
 
     QMenu *fileMenu = menuBar->addMenu("&File");
-    fileMenu->addAction("&Carica Biblioteca", QKeySequence::Open, this, &MainWindow::loadLibrary);
-    fileMenu->addAction("&Salva Biblioteca", QKeySequence::Save, this, &MainWindow::saveLibrary);
+    fileMenu->addAction("&Carica Biblioteca", this, &MainWindow::loadLibrary, QKeySequence::Open);
+    fileMenu->addAction("&Salva Biblioteca", this, &MainWindow::saveLibrary, QKeySequence::Save);
     fileMenu->addSeparator();
-    fileMenu->addAction("&Esci", QKeySequence::Quit, this, &MainWindow::close);
+    fileMenu->addAction("&Esci", this, &MainWindow::close, QKeySequence::Quit);
 
     QMenu *mediaMenu = menuBar->addMenu("&Media");
-    mediaMenu->addAction("&Aggiungi", QKeySequence::New, this, &MainWindow::addMedia);
+    mediaMenu->addAction("&Aggiungi", this, &MainWindow::addMedia, QKeySequence::New);
     mediaMenu->addAction("&Modifica", this, &MainWindow::editMedia);
-    mediaMenu->addAction("&Elimina", QKeySequence::Delete, this, &MainWindow::deleteMedia);
+    mediaMenu->addAction("&Elimina", this, &MainWindow::deleteMedia, QKeySequence::Delete);
     mediaMenu->addSeparator();
-    mediaMenu->addAction("&Cerca", QKeySequence::Find, this, &MainWindow::searchMedia);
+    mediaMenu->addAction("&Cerca", this, &MainWindow::searchMedia, QKeySequence::Find);
 }
 
 void MainWindow::setupStatusBar()
