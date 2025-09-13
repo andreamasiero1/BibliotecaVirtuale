@@ -39,12 +39,10 @@ void MainWindow::setupUI()
     mediaTypeFilter->addItem("🎬 Film", "film");
     mediaTypeFilter->addItem("📄 Articoli", "article");
 
-    // barra di ricerca
     QLineEdit *searchEdit = new QLineEdit();
     searchEdit->setPlaceholderText("Cerca media ...");
     QPushButton *searchBtn = new QPushButton("🔍 Cerca");
 
-    // action buttons
     QPushButton *addBtn = new QPushButton("➕ Aggiungi");
     QPushButton *editBtn = new QPushButton("✏️ Modifica");
     QPushButton *deleteBtn = new QPushButton("🗑️ Elimina");
@@ -61,7 +59,6 @@ void MainWindow::setupUI()
     toolbarLayout->addWidget(deleteBtn);
     toolbarLayout->addWidget(detailsBtn);
 
-    // Media display
     QScrollArea *scrollArea = new QScrollArea();
     QWidget *contentWidget = new QWidget();
     QGridLayout *gridLayout = new QGridLayout(contentWidget);
@@ -156,7 +153,6 @@ QList<Media *> MainWindow::getFilteredMedia() const
         QList<Media *> searchResults;
         for (Media *media : allMedia)
         {
-            // Ricerca estesa: titolo, anno e dettagli (che contengono caratteristiche specifiche del tipo)
             const bool matchTitle = media->getTitle().contains(searchTerm, Qt::CaseInsensitive);
             const bool matchYear = QString::number(media->getYear()).contains(searchTerm, Qt::CaseInsensitive);
             const bool matchDetails = media->visualizzaDettagli().contains(searchTerm, Qt::CaseInsensitive);
@@ -260,7 +256,6 @@ void MainWindow::addMedia()
         return;
     }
 
-    // Crea il media temporaneo per il visitor
     Media *tempMedia = nullptr;
     if (selectedType == "Libro")
     {
@@ -284,7 +279,6 @@ void MainWindow::addMedia()
     tempMedia->accept(*visitor);
     QWidget *widget = (static_cast<MediaWidgetVisitor *>(visitor))->getWidget();
 
-    // Crea il dialog
     QDialog dialog(this);
     dialog.setWindowTitle("Aggiungi " + selectedType);
     dialog.setModal(true);
@@ -292,7 +286,6 @@ void MainWindow::addMedia()
     QVBoxLayout *dialogLayout = new QVBoxLayout(&dialog);
     dialogLayout->addWidget(widget);
 
-    // Bottoni
     QHBoxLayout *buttonLayout = new QHBoxLayout();
     QPushButton *okBtn = new QPushButton("Aggiungi");
     QPushButton *cancelBtn = new QPushButton("Annulla");
@@ -308,7 +301,7 @@ void MainWindow::addMedia()
 
     if (dialog.exec() == QDialog::Accepted)
     {
-        // Crea il nuovo media con i dati inseriti
+ 
         MediaWidgetVisitor *editVisitor = static_cast<MediaWidgetVisitor *>(visitor);
 
         Media *newMedia = nullptr;
@@ -455,11 +448,11 @@ void MainWindow::searchMedia()
 {
     updateMediaDisplay();
 
-    QString searchTerm = searchEdit->text().trimmed(); // trimmed serve a rimuovere spazi vuoti
+    QString searchTerm = searchEdit->text().trimmed();
     if (!searchTerm.isEmpty())
     {
         QList<Media *> results = getFilteredMedia();
-        statusBar()->showMessage(QString("Trovati %1 risultati per \"%2\"").arg(results.size()).arg(searchTerm), 3000); // 3000 serve per mostrare il messaggio per 3 secondi
+        statusBar()->showMessage(QString("Trovati %1 risultati per \"%2\"").arg(results.size()).arg(searchTerm), 3000);
     }
     else
     {
@@ -472,13 +465,13 @@ namespace
     static QString librariesDir()
     {
         QDir base(QCoreApplication::applicationDirPath());
+//Anche qui ho dovuto aggiungere questa parte perchè ho lavorato al progetto su MacOS
 #ifdef Q_OS_MAC
-        // Se è un app bundle: Contents/MacOS -> risali al parent della .app
         if (base.dirName() == "MacOS")
         {
-            base.cdUp(); // Contents
-            base.cdUp(); // .app
-            base.cdUp(); // cartella che contiene la .app
+            base.cdUp();
+            base.cdUp();
+            base.cdUp();
         }
 #endif
         return base.filePath("data/bibliotecas");
@@ -552,12 +545,10 @@ void MainWindow::loadLibrary()
             selectedMedia = nullptr;
             clearMediaDisplay();
 
-            // forzo la pulizia degli eventi in coda
             QCoreApplication::processEvents();
 
             biblioteca = loadedLibrary;
 
-            // permette di attendere un momento prima di aggiornare il display
             QTimer::singleShot(100, this, [this]()
                                { updateMediaDisplay(); });
 
@@ -608,7 +599,7 @@ void MainWindow::loadDefaultLibrary()
         if (serializer.caricaBiblioteca(loadedLibrary, exampleFile))
         {
             biblioteca = loadedLibrary;
-            selectedMedia = nullptr; // Reset selection
+            selectedMedia = nullptr;
             statusBar()->showMessage(QString("Biblioteca di esempio caricata (%1 elementi)").arg(biblioteca.dimensione()), 2000);
         }
     }
@@ -673,7 +664,6 @@ bool MainWindow::eventFilter(QObject *obj, QEvent *event)
     return QMainWindow::eventFilter(obj, event);
 }
 
-// salva automaticamente la seesione prima di chiuderla
 void MainWindow::closeEvent(QCloseEvent *event)
 {
     if (biblioteca.dimensione() > 0)

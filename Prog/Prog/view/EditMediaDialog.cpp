@@ -24,7 +24,6 @@ void EditMediaDialog::setupUI()
 {
     QVBoxLayout *mainLayout = new QVBoxLayout(this);
 
-    // Common fields
     QFormLayout *commonFormLayout = new QFormLayout();
     titleEdit = new QLineEdit();
     yearSpinBox = new QSpinBox();
@@ -48,14 +47,12 @@ void EditMediaDialog::setupUI()
 
     mainLayout->addLayout(commonFormLayout);
 
-    // Stacked widget for type-specific fields
     stackedWidget = new QStackedWidget();
     createBookForm();
     createFilmForm();
     createMagazineArticleForm();
     mainLayout->addWidget(stackedWidget);
 
-    // Dialog buttons
     QDialogButtonBox *buttonBox = new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel);
     connect(buttonBox, &QDialogButtonBox::accepted, this, &EditMediaDialog::editMediaConfirmed);
     connect(buttonBox, &QDialogButtonBox::rejected, this, &EditMediaDialog::reject);
@@ -117,24 +114,23 @@ void EditMediaDialog::populateFields()
         coverImagePreview->setPixmap(pixmap.scaled(coverImagePreview->size(), Qt::KeepAspectRatio, Qt::SmoothTransformation));
     }
 
-    // Determine media type and populate specific fields
     if (Book *book = dynamic_cast<Book *>(currentMedia))
     {
-        stackedWidget->setCurrentIndex(0); // Book is at index 0
+        stackedWidget->setCurrentIndex(0);
         bookAuthorEdit->setText(book->getAuthor());
         bookIsbnEdit->setText(book->getIsbn());
         bookPublisherEdit->setText(book->getPublisher());
     }
     else if (Film *film = dynamic_cast<Film *>(currentMedia))
     {
-        stackedWidget->setCurrentIndex(1); // Film is at index 1
+        stackedWidget->setCurrentIndex(1);
         filmDirectorEdit->setText(film->getDirector());
         filmDurationSpinBox->setValue(film->getDuration());
         filmGenreEdit->setText(film->getGenere());
     }
     else if (MagazineArticle *article = dynamic_cast<MagazineArticle *>(currentMedia))
     {
-        stackedWidget->setCurrentIndex(2); // MagazineArticle is at index 2
+        stackedWidget->setCurrentIndex(2);
         articleAuthorEdit->setText(article->getAuthor());
         articleMagazineEdit->setText(article->getMagazine());
         articleDoiEdit->setText(article->getDoi());
@@ -169,12 +165,10 @@ void EditMediaDialog::editMediaConfirmed()
         return;
     }
 
-    // Update common fields
     currentMedia->setTitle(title);
     currentMedia->setYear(year);
     currentMedia->setCoverImagePath(coverImagePath);
 
-    // Update type-specific fields
     if (Book *book = dynamic_cast<Book *>(currentMedia))
     {
         book->setAuthor(bookAuthorEdit->text());

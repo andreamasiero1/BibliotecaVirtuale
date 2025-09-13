@@ -9,7 +9,6 @@ class Book : public Media
 public:
     Book(const QString &title, int year, const QString &author, const QString &isbn, const QString &publisher, const QString &coverImagePath = "");
 
-    // Costruttore di copia
     Book(const Book &other);
 
     QString getAuthor() const;

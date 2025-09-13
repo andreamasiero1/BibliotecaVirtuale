@@ -51,7 +51,6 @@ void Media::addCopies(int copies)
     copiesAvailable += copies;
 }
 
-//funzione di deserializzazione che crea un oggetto Media a partire da un QJsonObject 
 Media *Media::deserializza(const QJsonObject &json)
 {
     QString type = json["type"].toString();

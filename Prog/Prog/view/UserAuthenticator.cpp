@@ -28,7 +28,6 @@ bool UserAuthenticator::authenticate(const QString &username, const QString &pas
 
 bool UserAuthenticator::addUser(const QString &username, const QString &password)
 {
-    // Check if user already exists
     for (User *user : users)
     {
         if (user->getUsername() == username)

@@ -44,7 +44,6 @@ QWidget *MediaWidgetVisitor::visit(Book *book)
     }
     else
     {
-        // modalità display
         currentWidget = createBaseWidget(book->getTitle(), book->getYear(), book->getCoverImagePath());
         addBookSpecificInfo(currentWidget, book->getAuthor(), book->getIsbn(), book->getPublisher());
         if (QLabel *copiesLabel = currentWidget->findChild<QLabel *>("copiesLabel"))
@@ -60,17 +59,14 @@ QWidget *MediaWidgetVisitor::visit(Film *film)
 {
     if (editMode)
     {
-        // Modalità edit - crea form di modifica
         currentWidget = new QWidget();
         currentWidget->setFixedSize(400, 500);
 
         QVBoxLayout *mainLayout = new QVBoxLayout(currentWidget);
         QFormLayout *formLayout = new QFormLayout();
 
-        // Campi comuni
         createCommonFields(formLayout);
 
-        // Campi specifici per Film
         directorEdit = new QLineEdit();
         durationSpin = new QSpinBox();
         durationSpin->setRange(1, 600);
@@ -83,7 +79,6 @@ QWidget *MediaWidgetVisitor::visit(Film *film)
 
         mainLayout->addLayout(formLayout);
 
-        // Se c'è un film esistente, popola i campi
         if (film)
         {
             populateFields(film);
@@ -94,7 +89,6 @@ QWidget *MediaWidgetVisitor::visit(Film *film)
     }
     else
     {
-        // Modalità display - crea widget di visualizzazione
         currentWidget = createBaseWidget(film->getTitle(), film->getYear(), film->getCoverImagePath());
         addFilmSpecificInfo(currentWidget, film->getDirector(), film->getDuration(), film->getGenere());
         if (QLabel *copiesLabel = currentWidget->findChild<QLabel *>("copiesLabel"))
@@ -107,17 +101,14 @@ QWidget *MediaWidgetVisitor::visit(MagazineArticle *article)
 {
     if (editMode)
     {
-        // Modalità edit - crea form di modifica
         currentWidget = new QWidget();
         currentWidget->setFixedSize(400, 500);
 
         QVBoxLayout *mainLayout = new QVBoxLayout(currentWidget);
         QFormLayout *formLayout = new QFormLayout();
 
-        // Campi comuni
         createCommonFields(formLayout);
 
-        // Campi specifici per MagazineArticle
         articleAuthorEdit = new QLineEdit();
         magazineEdit = new QLineEdit();
         doiEdit = new QLineEdit();
@@ -128,7 +119,6 @@ QWidget *MediaWidgetVisitor::visit(MagazineArticle *article)
 
         mainLayout->addLayout(formLayout);
 
-        // Se c'è un articolo esistente, popola i campi
         if (article)
         {
             populateFields(article);
@@ -139,7 +129,7 @@ QWidget *MediaWidgetVisitor::visit(MagazineArticle *article)
     }
     else
     {
-        // Modalità display - crea widget di visualizzazione
+
         currentWidget = createBaseWidget(article->getTitle(), article->getYear(), article->getCoverImagePath());
         addMagazineArticleSpecificInfo(currentWidget, article->getAuthor(), article->getMagazine(), article->getDoi());
         if (QLabel *copiesLabel = currentWidget->findChild<QLabel *>("copiesLabel"))

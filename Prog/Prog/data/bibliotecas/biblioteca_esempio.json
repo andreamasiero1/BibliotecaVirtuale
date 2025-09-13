@@ -3,7 +3,7 @@
         {
             "author": "J.R.R. Tolkien",
             "copiesAvailable": 5,
-            "coverImagePath": "/Users/andreamasiero/Documents/BibliotecaVirtuale/Prog/Prog/data/images/9788830119000_0_0_536_0_75.jpg",
+            "coverImagePath": "9788830119000_0_0_536_0_75.jpg",
             "isbn": "978-0544003415",
             "publisher": "Houghton Mifflin Harcourt",
             "title": "The Lord of the Rings",
@@ -13,7 +13,7 @@
         {
             "author": "George Orwell",
             "copiesAvailable": 3,
-            "coverImagePath": "/Users/andreamasiero/Documents/BibliotecaVirtuale/Prog/Prog/data/images/9780151660384.OL.0.m.jpg",
+            "coverImagePath": "9780151660384.OL.0.m.jpg",
             "isbn": "978-0451524935",
             "publisher": "Harcourt Brace",
             "title": "1984",
@@ -22,7 +22,7 @@
         },
         {
             "copiesAvailable": 2,
-            "coverImagePath": "/Users/andreamasiero/Documents/BibliotecaVirtuale/Prog/Prog/data/images/MV5BNzIxMDQ2YTctNDY4MC00ZTRhLTk4ODQtMTVlOWY4NTdiYmMwXkEyXkFqcGc@._V1_.jpg",
+            "coverImagePath": "MV5BNzIxMDQ2YTctNDY4MC00ZTRhLTk4ODQtMTVlOWY4NTdiYmMwXkEyXkFqcGc@._V1_.jpg",
             "director": "Peter Jackson",
             "duration": 178,
             "genre": "Fantasy",
@@ -32,7 +32,7 @@
         },
         {
             "copiesAvailable": 4,
-            "coverImagePath": "/Users/andreamasiero/Documents/BibliotecaVirtuale/Prog/Prog/data/images/MV5BMjAxMzY3NjcxNF5BMl5BanBnXkFtZTcwNTI5OTM0Mw@@._V1_FMjpg_UX1000_.jpg",
+            "coverImagePath": "MV5BMjAxMzY3NjcxNF5BMl5BanBnXkFtZTcwNTI5OTM0Mw@@._V1_FMjpg_UX1000_.jpg",
             "director": "Christopher Nolan",
             "duration": 148,
             "genre": "Sci-Fi",
@@ -43,7 +43,7 @@
         {
             "author": "IPCC",
             "copiesAvailable": 1,
-            "coverImagePath": "/Users/andreamasiero/Documents/BibliotecaVirtuale/Prog/Prog/data/images/51Ka5aANHQL._UF1000,1000_QL80_.jpg",
+            "coverImagePath": "51Ka5aANHQL._UF1000,1000_QL80_.jpg",
             "doi": "10.1017/9781009157949",
             "magazine": "Cambridge University Press",
             "title": "Climate Change 2022: Mitigation of Climate Change",
@@ -53,7 +53,7 @@
         {
             "author": "Google AI Quantum Team",
             "copiesAvailable": 1,
-            "coverImagePath": "/Users/andreamasiero/Documents/BibliotecaVirtuale/Prog/Prog/data/images/41586_2019_1666_Fig1_HTML.png",
+            "coverImagePath": "41586_2019_1666_Fig1_HTML.png",
             "doi": "10.1038/s41586-019-1666-5",
             "magazine": "Nature",
             "title": "Quantum Supremacy Using a Programmable Superconducting Processor",

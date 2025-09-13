@@ -6,7 +6,6 @@
 #include <QSpinBox>
 #include <QComboBox>
 #include <QPushButton>
-#include <QLabel>
 #include <QStackedWidget>
 #include <QFormLayout>
 #include <QMessageBox>
@@ -34,21 +33,17 @@ private:
     QLineEdit *titleEdit;
     QSpinBox *yearSpinBox;
     QLineEdit *coverImagePathEdit;
-    QLabel *coverImagePreview;
     QString selectedCoverImagePath;
     QSpinBox *copiesSpinBox;
 
-    // Book fields
     QLineEdit *bookAuthorEdit;
     QLineEdit *bookIsbnEdit;
     QLineEdit *bookPublisherEdit;
 
-    // Film fields
     QLineEdit *filmDirectorEdit;
     QSpinBox *filmDurationSpinBox;
     QLineEdit *filmGenreEdit;
 
-    // Magazine Article fields
     QLineEdit *articleAuthorEdit;
     QLineEdit *articleMagazineEdit;
     QLineEdit *articleDoiEdit;

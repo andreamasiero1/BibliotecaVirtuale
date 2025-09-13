@@ -18,6 +18,9 @@ public:
 private:
     static QJsonArray serializeMediaList(const QList<Media *> &mediaList);
     static QList<Media *> deserializeMediaList(const QJsonArray &jsonArray);
+    static QString imagesBaseDir();
+    static QString toStoredImagePath(const QString &absolutePath);
+    static QString resolveImagePath(const QString &storedPath);
 };
 
 #endif // JSONSERIALIZER_H

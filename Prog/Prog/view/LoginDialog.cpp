@@ -22,7 +22,6 @@ void LoginDialog::setupUI()
     mainLayout->setSpacing(20);
     mainLayout->setContentsMargins(40, 30, 40, 30);
 
-    // Logo/Title section
     titleLabel = new QLabel("Biblioteca Virtuale");
     titleLabel->setAlignment(Qt::AlignCenter);
     titleLabel->setStyleSheet("font-size: 24px; font-weight: bold; color: #2c3e50; margin-bottom: 10px;");
@@ -152,7 +151,7 @@ void LoginDialog::attemptLogin()
     {
         statusLabel->setText("Login effettuato con successo!");
         statusLabel->setStyleSheet("color: #27ae60; font-size: 12px;");
-        accept(); // Close dialog with accepted result
+        accept();
     }
     else
     {

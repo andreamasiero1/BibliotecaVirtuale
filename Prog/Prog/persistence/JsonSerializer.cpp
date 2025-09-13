@@ -2,6 +2,9 @@
 #include <QFile>
 #include <QJsonParseError>
 #include <QDebug>
+#include <QFileInfo>
+#include <QDir>
+#include <QCoreApplication>
 
 bool JsonSerializer::salvaBiblioteca(const Biblioteca &biblioteca, const QString &filePath)
 {
@@ -77,8 +80,6 @@ bool JsonSerializer::caricaBiblioteca(Biblioteca &biblioteca, const QString &fil
     }
 }
 
-
-
 QJsonArray JsonSerializer::serializeMediaList(const QList<Media *> &mediaList)
 {
     QJsonArray jsonArray;
@@ -86,7 +87,10 @@ QJsonArray JsonSerializer::serializeMediaList(const QList<Media *> &mediaList)
     {
         if (media)
         {
-            jsonArray.append(media->serializza());
+            QJsonObject obj = media->serializza();
+            QString path = obj.value("coverImagePath").toString();
+            obj["coverImagePath"] = toStoredImagePath(path);
+            jsonArray.append(obj);
         }
     }
     return jsonArray;
@@ -101,7 +105,12 @@ QList<Media *> JsonSerializer::deserializeMediaList(const QJsonArray &jsonArray)
         {
             try
             {
-                Media *media = MediaFactory::createFromJson(value.toObject());
+                QJsonObject obj = value.toObject();
+                if (obj.contains("coverImagePath"))
+                {
+                    obj["coverImagePath"] = resolveImagePath(obj.value("coverImagePath").toString());
+                }
+                Media *media = MediaFactory::createFromJson(obj);
                 if (media)
                 {
                     mediaList.append(media);
@@ -114,4 +123,56 @@ QList<Media *> JsonSerializer::deserializeMediaList(const QJsonArray &jsonArray)
         }
     }
     return mediaList;
+}
+
+QString JsonSerializer::imagesBaseDir()
+{
+    QDir base(QCoreApplication::applicationDirPath());
+// Ho dovuto aggiungere questa parte perchè lavorando su MacOS l'app veniva eseguita in una sottocartella "MacOS" dentro Contents
+#ifdef Q_OS_MAC
+    if (base.dirName() == "MacOS")
+    {
+        base.cdUp();
+        base.cdUp();
+        base.cdUp();
+    }
+#endif
+    return base.filePath("data/images");
+}
+
+QString JsonSerializer::toStoredImagePath(const QString &absolutePath)
+{
+    if (absolutePath.isEmpty())
+        return absolutePath;
+    QFileInfo fi(absolutePath);
+    if (!fi.exists())
+        return fi.fileName().isEmpty() ? absolutePath : fi.fileName();
+
+    QString base = imagesBaseDir();
+    QString absBase = QDir(base).absolutePath();
+    QString absFile = fi.absoluteFilePath();
+    if (absFile.startsWith(absBase))
+    {
+        return fi.fileName();
+    }
+    return absolutePath;
+}
+
+QString JsonSerializer::resolveImagePath(const QString &storedPath)
+{
+    if (storedPath.isEmpty())
+        return storedPath;
+
+    QFileInfo fi(storedPath);
+    if (fi.exists() && fi.isFile())
+    {
+        return fi.absoluteFilePath();
+    }
+
+    QString candidate = QDir(imagesBaseDir()).filePath(fi.fileName());
+    QFileInfo cInfo(candidate);
+    if (cInfo.exists() && cInfo.isFile())
+        return cInfo.absoluteFilePath();
+
+    return storedPath;
 }

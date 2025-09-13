@@ -1737,7 +1737,13 @@ JsonSerializer.o: persistence/JsonSerializer.cpp persistence/JsonSerializer.h \
 		/opt/homebrew/lib/QtCore.framework/Headers/QJsonParseError \
 		/opt/homebrew/lib/QtCore.framework/Headers/qjsonparseerror.h \
 		/opt/homebrew/lib/QtCore.framework/Headers/QDebug \
-		/opt/homebrew/lib/QtCore.framework/Headers/qdebug.h
+		/opt/homebrew/lib/QtCore.framework/Headers/qdebug.h \
+		/opt/homebrew/lib/QtCore.framework/Headers/QFileInfo \
+		/opt/homebrew/lib/QtCore.framework/Headers/qfileinfo.h \
+		/opt/homebrew/lib/QtCore.framework/Headers/QDir \
+		/opt/homebrew/lib/QtCore.framework/Headers/qdir.h \
+		/opt/homebrew/lib/QtCore.framework/Headers/QCoreApplication \
+		/opt/homebrew/lib/QtCore.framework/Headers/qcoreapplication.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o JsonSerializer.o persistence/JsonSerializer.cpp
 
 AddMediaDialog.o: view/AddMediaDialog.cpp view/AddMediaDialog.h \
@@ -1783,6 +1789,8 @@ AddMediaDialog.o: view/AddMediaDialog.cpp view/AddMediaDialog.h \
 		/opt/homebrew/lib/QtWidgets.framework/Headers/qdialogbuttonbox.h \
 		/opt/homebrew/lib/QtGui.framework/Headers/QPixmap \
 		/opt/homebrew/lib/QtGui.framework/Headers/qpixmap.h \
+		/opt/homebrew/lib/QtGui.framework/Headers/QImageReader \
+		/opt/homebrew/lib/QtGui.framework/Headers/qimagereader.h \
 		/opt/homebrew/lib/QtCore.framework/Headers/QDir \
 		/opt/homebrew/lib/QtCore.framework/Headers/qdir.h \
 		/opt/homebrew/lib/QtCore.framework/Headers/QFileInfo \

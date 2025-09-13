@@ -35,17 +35,14 @@ private:
     QLabel *coverImagePreview;
     QString selectedCoverImagePath;
 
-    // Book fields
     QLineEdit *bookAuthorEdit;
     QLineEdit *bookIsbnEdit;
     QLineEdit *bookPublisherEdit;
 
-    // Film fields
     QLineEdit *filmDirectorEdit;
     QSpinBox *filmDurationSpinBox;
     QLineEdit *filmGenreEdit;
 
-    // Magazine Article fields
     QLineEdit *articleAuthorEdit;
     QLineEdit *articleMagazineEdit;
     QLineEdit *articleDoiEdit;

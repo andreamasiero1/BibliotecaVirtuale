@@ -35,10 +35,6 @@ void AddMediaDialog::setupUI()
     coverImagePathEdit->setReadOnly(true);
     QPushButton *selectImageBtn = new QPushButton("Seleziona Immagine");
     connect(selectImageBtn, &QPushButton::clicked, this, &AddMediaDialog::selectCoverImage);
-    coverImagePreview = new QLabel();
-    coverImagePreview->setFixedSize(100, 150);
-    coverImagePreview->setScaledContents(true);
-    coverImagePreview->setStyleSheet("border: 1px solid gray;");
     commonFormLayout->addRow("Titolo:", titleEdit);
     commonFormLayout->addRow("Anno:", yearSpinBox);
     commonFormLayout->addRow("Copie disponibili:", copiesSpinBox);
@@ -46,10 +42,9 @@ void AddMediaDialog::setupUI()
     imageLayout->addWidget(coverImagePathEdit);
     imageLayout->addWidget(selectImageBtn);
     commonFormLayout->addRow("Copertina:", imageLayout);
-    commonFormLayout->addRow("Anteprima:", coverImagePreview);
+    // Anteprima rimossa su richiesta: nessuna QLabel per preview
     mainLayout->addLayout(commonFormLayout);
 
-    // selezione del tipo di media
     QComboBox *mediaTypeComboBox = new QComboBox();
     mediaTypeComboBox->addItem("Libro");
     mediaTypeComboBox->addItem("Film");
@@ -63,7 +58,6 @@ void AddMediaDialog::setupUI()
     createMagazineArticleForm();
     mainLayout->addWidget(stackedWidget);
 
-    // bottone di dialogo
     QDialogButtonBox *buttonBox = new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel);
     connect(buttonBox, &QDialogButtonBox::accepted, this, &AddMediaDialog::addMediaConfirmed);
     connect(buttonBox, &QDialogButtonBox::rejected, this, &AddMediaDialog::reject);
@@ -126,8 +120,6 @@ void AddMediaDialog::selectCoverImage()
     {
         selectedCoverImagePath = imagePath;
         coverImagePathEdit->setText(QFileInfo(imagePath).fileName());
-        QPixmap pixmap(imagePath);
-        coverImagePreview->setPixmap(pixmap.scaled(coverImagePreview->size(), Qt::KeepAspectRatio, Qt::SmoothTransformation));
     }
 }
 
