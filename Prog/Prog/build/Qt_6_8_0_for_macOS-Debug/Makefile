@@ -857,8 +857,6 @@ moc_AddMediaDialog.cpp: ../../view/AddMediaDialog.h \
 		/Users/andreamasiero/Qt/6.8.0/macos/lib/QtWidgets.framework/Headers/qcombobox.h \
 		/Users/andreamasiero/Qt/6.8.0/macos/lib/QtWidgets.framework/Headers/QPushButton \
 		/Users/andreamasiero/Qt/6.8.0/macos/lib/QtWidgets.framework/Headers/qpushbutton.h \
-		/Users/andreamasiero/Qt/6.8.0/macos/lib/QtWidgets.framework/Headers/QLabel \
-		/Users/andreamasiero/Qt/6.8.0/macos/lib/QtWidgets.framework/Headers/qlabel.h \
 		/Users/andreamasiero/Qt/6.8.0/macos/lib/QtWidgets.framework/Headers/QStackedWidget \
 		/Users/andreamasiero/Qt/6.8.0/macos/lib/QtWidgets.framework/Headers/qstackedwidget.h \
 		/Users/andreamasiero/Qt/6.8.0/macos/lib/QtWidgets.framework/Headers/QFormLayout \
@@ -1240,7 +1238,13 @@ JsonSerializer.o: ../../persistence/JsonSerializer.cpp ../../persistence/JsonSer
 		/Users/andreamasiero/Qt/6.8.0/macos/lib/QtCore.framework/Headers/qfile.h \
 		/Users/andreamasiero/Qt/6.8.0/macos/lib/QtCore.framework/Headers/QJsonParseError \
 		/Users/andreamasiero/Qt/6.8.0/macos/lib/QtCore.framework/Headers/QDebug \
-		/Users/andreamasiero/Qt/6.8.0/macos/lib/QtCore.framework/Headers/qdebug.h
+		/Users/andreamasiero/Qt/6.8.0/macos/lib/QtCore.framework/Headers/qdebug.h \
+		/Users/andreamasiero/Qt/6.8.0/macos/lib/QtCore.framework/Headers/QFileInfo \
+		/Users/andreamasiero/Qt/6.8.0/macos/lib/QtCore.framework/Headers/qfileinfo.h \
+		/Users/andreamasiero/Qt/6.8.0/macos/lib/QtCore.framework/Headers/QDir \
+		/Users/andreamasiero/Qt/6.8.0/macos/lib/QtCore.framework/Headers/qdir.h \
+		/Users/andreamasiero/Qt/6.8.0/macos/lib/QtCore.framework/Headers/QCoreApplication \
+		/Users/andreamasiero/Qt/6.8.0/macos/lib/QtCore.framework/Headers/qcoreapplication.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o JsonSerializer.o ../../persistence/JsonSerializer.cpp
 
 AddMediaDialog.o: ../../view/AddMediaDialog.cpp ../../view/AddMediaDialog.h \
@@ -1254,8 +1258,6 @@ AddMediaDialog.o: ../../view/AddMediaDialog.cpp ../../view/AddMediaDialog.h \
 		/Users/andreamasiero/Qt/6.8.0/macos/lib/QtWidgets.framework/Headers/qcombobox.h \
 		/Users/andreamasiero/Qt/6.8.0/macos/lib/QtWidgets.framework/Headers/QPushButton \
 		/Users/andreamasiero/Qt/6.8.0/macos/lib/QtWidgets.framework/Headers/qpushbutton.h \
-		/Users/andreamasiero/Qt/6.8.0/macos/lib/QtWidgets.framework/Headers/QLabel \
-		/Users/andreamasiero/Qt/6.8.0/macos/lib/QtWidgets.framework/Headers/qlabel.h \
 		/Users/andreamasiero/Qt/6.8.0/macos/lib/QtWidgets.framework/Headers/QStackedWidget \
 		/Users/andreamasiero/Qt/6.8.0/macos/lib/QtWidgets.framework/Headers/qstackedwidget.h \
 		/Users/andreamasiero/Qt/6.8.0/macos/lib/QtWidgets.framework/Headers/QFormLayout \
